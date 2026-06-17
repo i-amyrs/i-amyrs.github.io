@@ -1,367 +1,586 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Yuvraj Singh | Homepage</title>
-    <style>
-        /* ===== RESET ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Yuvraj Singh · GitHub Profile</title>
+  <!-- Font Awesome 6 for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        /* ===== OPTION 1: MODERN CARD STYLE ===== */
-        .option1-body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0;
-            padding: 20px;
-        }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+      color: #c9d1d9;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
-        .card {
-            background: white;
-            padding: 50px;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            text-align: center;
-            max-width: 500px;
-            width: 100%;
-        }
+    /* modern gradient background animation */
+    .bg-glow {
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 40%, rgba(88, 166, 255, 0.08) 0%, transparent 40%),
+                  radial-gradient(circle at 70% 60%, rgba(163, 113, 247, 0.08) 0%, transparent 45%);
+      z-index: 0;
+      pointer-events: none;
+    }
 
-        .card h1 {
-            color: #333;
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
 
-        .emoji {
-            font-size: 3em;
-        }
+    /* navigation */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      flex-wrap: wrap;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 32px;
+      backdrop-filter: blur(10px);
+    }
 
-        .card p {
-            color: #666;
-            font-size: 1.2em;
-            line-height: 1.6;
-            margin: 10px 0;
-        }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(to right, #58a6ff, #bc8cff);
+      -webkit-background-clip: text;    
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+    }
 
-        .btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 30px;
-            background: #667eea;
-            color: white;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
 
-        .btn:hover {
-            background: #764ba2;
-            transform: scale(1.05);
-        }
+    .nav-links a {
+      color: #8b949e;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
 
-        .social-icons {
-            margin-top: 25px;
-        }
+    .nav-links a:hover {
+      color: #f0f6fc;
+    }
 
-        .social-icons a {
-            margin: 0 10px;
-            font-size: 1.8em;
-            text-decoration: none;
-            color: #333;
-            transition: 0.3s;
-        }
+    .nav-links a i {
+      font-size: 0.9rem;
+    }
 
-        .social-icons a:hover {
-            color: #667eea;
-        }
+    .menu-icon {
+      display: none;
+      font-size: 1.6rem;
+      color: #c9d1d9;
+      cursor: pointer;
+    }
 
-        /* ===== OPTION 2: DARK THEME WITH STATS ===== */
-        .option2-body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0d1117;
-            color: #c9d1d9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
+    /* profile header card */
+    .profile-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      background: rgba(22, 27, 34, 0.7);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      padding: 32px;
+      margin-bottom: 40px;
+      box-shadow: 0 20px 35px rgba(0,0,0,0.5);
+    }
 
-        .container {
-            max-width: 800px;
-            padding: 40px;
-            text-align: center;
-            width: 100%;
-        }
+    .avatar-wrapper {
+      flex-shrink: 0;
+    }
 
-        .container h1 {
-            font-size: 3em;
-            background: linear-gradient(135deg, #58a6ff, #bc8cff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+    .avatar {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #58a6ff, #a371f7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      color: white;
+      box-shadow: 0 12px 24px rgba(88, 166, 255, 0.25);
+      border: 3px solid rgba(255,255,255,0.2);
+    }
 
-        .subtitle {
-            font-size: 1.2em;
-            color: #8b949e;
-            margin: 10px 0 30px;
-        }
+    .profile-details {
+      flex: 1;
+    }
 
-        .stats {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
+    .profile-details h1 {
+      font-size: 2.3rem;
+      font-weight: 700;
+      color: #f0f6fc;
+      margin-bottom: 6px;
+    }
 
-        .stat-box {
-            background: #161b22;
-            padding: 20px 30px;
-            border-radius: 10px;
-            border: 1px solid #30363d;
-        }
+    .username {
+      color: #58a6ff;
+      font-size: 1.2rem;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-        .stat-box .number {
-            font-size: 2em;
-            font-weight: bold;
-            color: #58a6ff;
-        }
+    .bio {
+      color: #8b949e;
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      max-width: 600px;
+    }
 
-        .stat-box .label {
-            color: #8b949e;
-            font-size: 0.9em;
-        }
+    .stats {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
 
-        .container img {
-            margin-top: 30px;
-            max-width: 100%;
-            border-radius: 10px;
-        }
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #c9d1d9;
+    }
 
-        .container .footer-text {
-            margin-top: 30px;
-            color: #8b949e;
-        }
+    .stat-item i {
+      color: #8b949e;
+    }
 
-        /* ===== OPTION 3: NAVIGATION MENU STYLE ===== */
-        .option3-body {
-            font-family: Arial, sans-serif;
-            background: #f4f4f9;
-        }
+    .location {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      color: #8b949e;
+      flex-wrap: wrap;
+    }
 
-        nav {
-            background: #333;
-            padding: 15px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
+    /* navigation tabs (internal sections) */
+    .section-nav {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding-bottom: 12px;
+    }
 
-        nav .logo {
-            color: white;
-            font-size: 1.5em;
-            font-weight: bold;
-        }
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: #8b949e;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.02);
+    }
 
-        nav .nav-links {
-            display: flex;
-            flex-wrap: wrap;
-        }
+    .tab-btn i {
+      font-size: 0.9rem;
+    }
 
-        nav .nav-links a {
-            color: white;
-            text-decoration: none;
-            margin-left: 25px;
-            padding: 8px 15px;
-            border-radius: 5px;
-            transition: 0.3s;
-        }
+    .tab-btn.active {
+      background: rgba(88, 166, 255, 0.15);
+      color: #58a6ff;
+      font-weight: 600;
+      box-shadow: 0 0 10px rgba(88,166,255,0.2);
+    }
 
-        nav .nav-links a:hover {
-            background: #555;
-        }
+    .tab-btn:hover {
+      color: #f0f6fc;
+      background: rgba(255,255,255,0.05);
+    }
 
-        .hero {
-            text-align: center;
-            padding: 80px 20px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-        }
+    /* content panels */
+    .panel {
+      display: none;
+      animation: fade 0.3s ease;
+    }
 
-        .hero h1 {
-            font-size: 3em;
-        }
+    .panel.active {
+      display: block;
+    }
 
-        .hero p {
-            font-size: 1.2em;
-            margin-top: 10px;
-        }
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-        .content {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
+    .repo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 10px;
+    }
 
-        .content .card-item {
-            background: white;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            text-align: center;
-        }
+    .repo-card {
+      background: rgba(22, 27, 34, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 20px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
 
-        .content .card-item h3 {
-            color: #333;
-            margin-bottom: 10px;
-        }
+    .repo-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(88, 166, 255, 0.4);
+    }
 
-        .content .card-item p {
-            color: #666;
-        }
+    .repo-name {
+      color: #58a6ff;
+      font-weight: 600;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: #333;
-            color: white;
-            margin-top: 40px;
-        }
+    .repo-desc {
+      color: #8b949e;
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+    }
 
-        /* ===== SECTION DIVIDERS ===== */
-        .section-divider {
-            text-align: center;
-            padding: 30px 20px;
-            background: #e0e0e0;
-            color: #333;
-            font-size: 1.5em;
-            font-weight: bold;
-            letter-spacing: 2px;
-        }
+    .repo-meta {
+      display: flex;
+      gap: 16px;
+      color: #8b949e;
+      font-size: 0.8rem;
+    }
 
-        .section-divider span {
-            background: #333;
-            color: white;
-            padding: 10px 30px;
-            border-radius: 30px;
-        }
-    </style>
+    .project-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .project-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: rgba(255,255,255,0.02);
+      padding: 14px 18px;
+      border-radius: 14px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .skill {
+      background: rgba(88, 166, 255, 0.12);
+      color: #58a6ff;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+    }
+
+    footer {
+      margin-top: 60px;
+      text-align: center;
+      color: #484f58;
+      padding: 24px 0;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    @media (max-width: 700px) {
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 16px;
+        margin-top: 16px;
+      }
+      .nav-links.show {
+        display: flex;
+      }
+      .menu-icon {
+        display: block;
+      }
+      .profile-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .stats {
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
 <body>
-
-    <!-- ============================================ -->
-    <!-- OPTION 1: MODERN CARD STYLE                  -->
-    <!-- ============================================ -->
-    <div class="section-divider">
-        <span>✨ Option 1: Modern Card</span>
+<div class="bg-glow"></div>
+<div class="container">
+  <!-- Main Navigation (external style) -->
+  <nav>
+    <div class="logo"><i class="fab fa-github"></i> alex-rivera</div>
+    <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
+    <div class="nav-links" id="navLinks">
+      <a href="#home"><i class="fas fa-home"></i> Home</a>
+      <a href="#repositories"><i class="fas fa-code-branch"></i> Repos</a>
+      <a href="#projects"><i class="fas fa-rocket"></i> Projects</a>
+      <a href="#skills"><i class="fas fa-microchip"></i> Skills</a>
+      <a href="https://github.com/alex-rivera" target="_blank"><i class="fab fa-github"></i> GitHub</a>
     </div>
+  </nav>
 
-    <div class="option1-body">
-        <div class="card">
-            <div class="emoji">🚀</div>
-            <h1>Yuvraj Singh</h1>
-            <p>👨‍💻 Developer | Creator | Learner</p>
-            <p>Welcome to my little corner of the internet!</p>
-            <a href="#" class="btn">View My Projects</a>
+  <!-- Profile header (static, represents you) -->
+  <div class="profile-section">
+    <div class="avatar-wrapper">
+      <div class="avatar"><i class="fas fa-user-astronaut"></i></div>
+    </div>
+    <div class="profile-details">
+      <h1>Yuvraj Singh</h1>
+      <div class="username"><i class="fab fa-github"></i> i-amyrs</div>
+      <p class="bio">Full‑stack developer & open source enthusiast. Building tools for developers, exploring cloud native & AI. Love clean code and great coffee.</p>
+      <div class="stats">
+        <div class="stat-item"><i class="fas fa-folder"></i> 0 repositories</div>
+        <div class="stat-item"><i class="fas fa-users"></i> 0 followers</div>
+        <div class="stat-item"><i class="fas fa-user-plus"></i> 0 following</div>
+      </div>
+      <div class="location">
+        <span><i class="fas fa-map-marker-alt"></i> Lucknow, India</span>
+        <span><i class="far fa-building"></i> @NA</span>
+        <span><i class="far fa-clock"></i> Joined 2025</span>
+      </div>
+    </div>
+  </div>
 
-            <div class="social-icons">
-                <a href="https://github.com/i-amyrs" target="_blank">🐙</a>
-                <a href="#" target="_blank">🐦</a>
-                <a href="#" target="_blank">💼</a>
-            </div>
+  <!-- Internal navigation tabs (dynamic content) -->
+  <div class="section-nav">
+    <button class="tab-btn active" data-panel="overview"><i class="fas fa-book-open"></i> Overview</button>
+    <button class="tab-btn" data-panel="repositories"><i class="fas fa-code"></i> Repositories</button>
+    <button class="tab-btn" data-panel="projects"><i class="fas fa-tasks"></i> Projects</button>
+    <button class="tab-btn" data-panel="skills"><i class="fas fa-cogs"></i> Skills</button>
+  </div>
+
+  <!-- Panels -->
+  <div class="panel active" id="overview">
+    <h2 style="color:#f0f6fc; margin-bottom: 16px;"><i class="fas fa-chart-line"></i> Popular repositories</h2>
+    <div class="repo-grid">
+      <div class="repo-card">
+        <div class="repo-name"><i class="fas fa-book"></i> dotfiles</div>
+        <div class="repo-desc">My developer environment setup · zsh, vim, tmux, and custom scripts.</div>
+        <div class="repo-meta"><span><i class="fas fa-star"></i> 28</span> <span><i class="fas fa-code-branch"></i> 5</span> <span>Shell</span></div>
+      </div>
+      <div class="repo-card">
+        <div class="repo-name"><i class="fas fa-laptop-code"></i> devportfolio</div>
+        <div class="repo-desc">Blazing fast portfolio template for developers. Next.js & MDX.</div>
+        <div class="repo-meta"><span><i class="fas fa-star"></i> 54</span> <span><i class="fas fa-code-branch"></i> 12</span> <span>TypeScript</span></div>
+      </div>
+      <div class="repo-card">
+        <div class="repo-name"><i class="fas fa-brain"></i> neural-style</div>
+        <div class="repo-desc">PyTorch implementation of neural style transfer with CLI.</div>
+        <div class="repo-meta"><span><i class="fas fa-star"></i> 19</span> <span><i class="fas fa-code-branch"></i> 3</span> <span>Python</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="repositories">
+    <h2 style="color:#f0f6fc; margin-bottom: 18px;"><i class="fas fa-database"></i> All Repositories</h2>
+    <div class="repo-grid">
+      <div class="repo-card">
+        <div class="repo-name"><i class="fas fa-globe"></i> cloud-toolkit</div>
+        <div class="repo-desc">CLI for managing cloud resources across AWS & GCP.</div>
+        <div class="repo-meta"><span><i class="fas fa-star"></i> 33</span> <span>Go</span></div>
+      </div>
+      <div class="repo-card">
+        <div class="repo-name"><i class="fas fa-mobile-alt"></i> react-native-ui</div>
+        <div class="repo-desc">Reusable component library for React Native apps.</div>
+        <div class="repo-meta"><span><i class="fas fa-star"></i> 41</span> <span>TypeScript</span></div>
+      </div>
+      <div class="repo-card">
+        <div class="repo-name"><i class="fas fa-robot"></i> gitwise</div>
+        <div class="repo-desc">AI-powered git commit assistant (GitHub Action).</div>
+        <div class="repo-meta"><span><i class="fas fa-star"></i> 67</span> <span>JavaScript</span></div>
+      </div>
+      <div class="repo-card">
+        <div class="repo-name"><i class="fas fa-chart-bar"></i> crypto-dash</div>
+        <div class="repo-desc">Real-time cryptocurrency dashboard with WebSockets.</div>
+        <div class="repo-meta"><span><i class="fas fa-star"></i> 22</span> <span>Vue</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="projects">
+    <h2 style="color:#f0f6fc; margin-bottom: 16px;"><i class="fas fa-folder-open"></i> Featured Projects</h2>
+    <div class="project-list">
+      <div class="project-item">
+        <i class="fas fa-check-circle" style="color: #3fb950; font-size: 1.4rem;"></i>
+        <div>
+          <strong style="color:#f0f6fc;">OpenAPI Generator Plus</strong>
+          <p style="color:#8b949e; font-size:0.9rem;">Custom templates & plugins for OpenAPI code generation.</p>
         </div>
-    </div>
-
-    <!-- ============================================ -->
-    <!-- OPTION 2: DARK THEME WITH STATS              -->
-    <!-- ============================================ -->
-    <div class="section-divider">
-        <span>📊 Option 2: Dark Theme with Stats</span>
-    </div>
-
-    <div class="option2-body">
-        <div class="container">
-            <h1>👋 Yuvraj Singh</h1>
-            <p class="subtitle">Developer • Creator • Tech Enthusiast</p>
-
-            <div class="stats">
-                <div class="stat-box">
-                    <div class="number">📁 5+</div>
-                    <div class="label">Projects</div>
-                </div>
-                <div class="stat-box">
-                    <div class="number">⭐ 10+</div>
-                    <div class="label">Stars Earned</div>
-                </div>
-                <div class="stat-box">
-                    <div class="number">👥 3+</div>
-                    <div class="label">Contributions</div>
-                </div>
-            </div>
-
-            <!-- GitHub Stats Card -->
-            <img src="https://github-readme-stats.vercel.app/api?username=i-amyrs&show_icons=true&theme=dark" alt="GitHub Stats">
-
-            <p class="footer-text">
-                🚀 Building cool stuff, one commit at a time!
-            </p>
+      </div>
+      <div class="project-item">
+        <i class="fas fa-check-circle" style="color: #3fb950; font-size: 1.4rem;"></i>
+        <div>
+          <strong style="color:#f0f6fc;">DevMetrics</strong>
+          <p style="color:#8b949e; font-size:0.9rem;">Analyze developer productivity from git history.</p>
         </div>
-    </div>
-
-    <!-- ============================================ -->
-    <!-- OPTION 3: NAVIGATION MENU STYLE              -->
-    <!-- ============================================ -->
-    <div class="section-divider">
-        <span>🧭 Option 3: Navigation Menu</span>
-    </div>
-
-    <div class="option3-body">
-        <nav>
-            <span class="logo">🚀 Yuvraj</span>
-            <div class="nav-links">
-                <a href="#">Home</a>
-                <a href="#">Projects</a>
-                <a href="#">Blog</a>
-                <a href="#">Contact</a>
-            </div>
-        </nav>
-
-        <div class="hero">
-            <h1>Hello, I'm Yuvraj Singh 👋</h1>
-            <p>Developer • Creator • Problem Solver</p>
+      </div>
+      <div class="project-item">
+        <i class="fas fa-check-circle" style="color: #3fb950; font-size: 1.4rem;"></i>
+        <div>
+          <strong style="color:#f0f6fc;">Markdown Notes</strong>
+          <p style="color:#8b949e; font-size:0.9rem;">PWA note-taking app with Markdown and live preview.</p>
         </div>
-
-        <div class="content">
-            <div class="card-item">
-                <h3>💻 Projects</h3>
-                <p>Check out my latest work on GitHub</p>
-            </div>
-            <div class="card-item">
-                <h3>📝 Blog</h3>
-                <p>Writing about tech and development</p>
-            </div>
-            <div class="card-item">
-                <h3>🎯 Goals</h3>
-                <p>Building awesome things every day</p>
-            </div>
-        </div>
-
-        <footer>
-            <p>© 2026 Yuvraj Singh | Built with ❤️ on GitHub Pages</p>
-        </footer>
+      </div>
     </div>
+  </div>
 
+  <div class="panel" id="skills">
+    <h2 style="color:#f0f6fc; margin-bottom: 16px;"><i class="fas fa-tools"></i> Technologies & Skills</h2>
+    <div class="skill-tags">
+      <span class="skill">JavaScript</span>
+      <span class="skill">TypeScript</span>
+      <span class="skill">React</span>
+      <span class="skill">Node.js</span>
+      <span class="skill">Python</span>
+      <span class="skill">Go</span>
+      <span class="skill">Docker</span>
+      <span class="skill">Kubernetes</span>
+      <span class="skill">AWS</span>
+      <span class="skill">GitHub Actions</span>
+      <span class="skill">Tailwind</span>
+      <span class="skill">GraphQL</span>
+    </div>
+    <p style="color:#8b949e; margin-top: 24px;">Always learning and experimenting with new tools. Currently diving deeper into Rust and WebAssembly.</p>
+  </div>
+
+  <footer>
+    <p>© 2025 Alex Rivera · Built with <i class="fas fa-heart" style="color:#da3633;"></i> using HTML, CSS & JavaScript</p>
+  </footer>
+</div>
+
+<script>
+  (function() {
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    if (menuToggle && navLinks) {
+      menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('show');
+      });
+      // Close menu when a link is clicked (mobile)
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth <= 700) {
+            navLinks.classList.remove('show');
+          }
+        });
+      });
+    }
+
+    // Tab navigation (internal panels)
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const panels = document.querySelectorAll('.panel');
+
+    function switchPanel(panelId) {
+      // Hide all panels
+      panels.forEach(panel => panel.classList.remove('active'));
+      // Remove active class from all tabs
+      tabButtons.forEach(btn => btn.classList.remove('active'));
+      
+      // Show selected panel
+      const activePanel = document.getElementById(panelId);
+      if (activePanel) {
+        activePanel.classList.add('active');
+      }
+      
+      // Activate corresponding tab button
+      const activeTab = document.querySelector(`.tab-btn[data-panel="${panelId}"]`);
+      if (activeTab) {
+        activeTab.classList.add('active');
+      }
+    }
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', (e) => {
+        const panelId = button.getAttribute('data-panel');
+        if (panelId) {
+          switchPanel(panelId);
+        }
+      });
+    });
+
+    // Smooth handling for external nav links that point to sections (like #repositories)
+    const externalNavLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+    externalNavLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (!href) return;
+        // Extract the id (remove #)
+        const targetId = href.substring(1);
+        // Map some IDs to panel names (repositories, projects, skills, home->overview)
+        if (targetId === 'home') {
+          switchPanel('overview');
+          e.preventDefault();
+        } else if (targetId === 'repositories') {
+          switchPanel('repositories');
+          e.preventDefault();
+        } else if (targetId === 'projects') {
+          switchPanel('projects');
+          e.preventDefault();
+        } else if (targetId === 'skills') {
+          switchPanel('skills');
+          e.preventDefault();
+        }
+        // For other links (like #) default behavior
+      });
+    });
+
+    // Ensure that if URL has hash, we activate corresponding panel (optional)
+    window.addEventListener('load', () => {
+      const hash = window.location.hash.substring(1);
+      if (hash === 'repositories' || hash === 'projects' || hash === 'skills') {
+        switchPanel(hash);
+      } else if (hash === 'home' || hash === '') {
+        switchPanel('overview');
+      }
+    });
+  })();
+</script>
 </body>
 </html>
