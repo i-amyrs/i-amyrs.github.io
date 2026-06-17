@@ -3,13 +3,15 @@
 <head>
     <title>Yuvraj Singh | Homepage</title>
     <style>
+        /* ===== RESET ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
+        /* ===== OPTION 1: MODERN CARD STYLE ===== */
+        .option1-body {
             font-family: Arial, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
@@ -17,6 +19,7 @@
             justify-content: center;
             align-items: center;
             margin: 0;
+            padding: 20px;
         }
 
         .card {
@@ -26,9 +29,10 @@
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             text-align: center;
             max-width: 500px;
+            width: 100%;
         }
 
-        h1 {
+        .card h1 {
             color: #333;
             font-size: 2.5em;
             margin-bottom: 10px;
@@ -38,7 +42,7 @@
             font-size: 3em;
         }
 
-        p {
+        .card p {
             color: #666;
             font-size: 1.2em;
             line-height: 1.6;
@@ -77,32 +81,9 @@
         .social-icons a:hover {
             color: #667eea;
         }
-    </style>
-</head>
-<body>
-    <div class="card">
-        <div class="emoji">🚀</div>
-        <h1>Yuvraj Singh</h1>
-        <p>👨‍💻 Developer | Creator | Learner</p>
-        <p>Welcome to my little corner of the internet!</p>
-        <a href="#" class="btn">View My Projects</a>
-        
-        <div class="social-icons">
-            <a href="https://github.com/i-amyrs" target="_blank">🐙</a>
-            <a href="#" target="_blank">🐦</a>
-            <a href="#" target="_blank">💼</a>
-        </div>
-    </div>
-</body>
-</html>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Yuvraj Singh | Homepage</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
+        /* ===== OPTION 2: DARK THEME WITH STATS ===== */
+        .option2-body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #0d1117;
             color: #c9d1d9;
@@ -110,97 +91,93 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            padding: 20px;
         }
+
         .container {
             max-width: 800px;
             padding: 40px;
             text-align: center;
+            width: 100%;
         }
-        h1 {
+
+        .container h1 {
             font-size: 3em;
             background: linear-gradient(135deg, #58a6ff, #bc8cff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
+
         .subtitle {
             font-size: 1.2em;
             color: #8b949e;
             margin: 10px 0 30px;
         }
+
         .stats {
             display: flex;
             gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
         }
+
         .stat-box {
             background: #161b22;
             padding: 20px 30px;
             border-radius: 10px;
             border: 1px solid #30363d;
         }
+
         .stat-box .number {
             font-size: 2em;
             font-weight: bold;
             color: #58a6ff;
         }
+
         .stat-box .label {
             color: #8b949e;
             font-size: 0.9em;
         }
-        img {
+
+        .container img {
             margin-top: 30px;
             max-width: 100%;
             border-radius: 10px;
         }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>👋 Yuvraj Singh</h1>
-        <p class="subtitle">Developer • Creator • Tech Enthusiast</p>
-        
-        <div class="stats">
-            <div class="stat-box">
-                <div class="number">📁 5+</div>
-                <div class="label">Projects</div>
-            </div>
-            <div class="stat-box">
-                <div class="number">⭐ 10+</div>
-                <div class="label">Stars Earned</div>
-            </div>
-            <div class="stat-box">
-                <div class="number">👥 3+</div>
-                <div class="label">Contributions</div>
-            </div>
-        </div>
 
-        <!-- GitHub Stats Card -->
-        <img src="https://github-readme-stats.vercel.app/api?username=i-amyrs&show_icons=true&theme=dark" alt="GitHub Stats">
-        
-        <p style="margin-top: 30px; color: #8b949e;">
-            🚀 Building cool stuff, one commit at a time!
-        </p>
-    </div>
-</body>
-</html>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Yuvraj Singh</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: Arial, sans-serif; background: #f4f4f9; }
-        
+        .container .footer-text {
+            margin-top: 30px;
+            color: #8b949e;
+        }
+
+        /* ===== OPTION 3: NAVIGATION MENU STYLE ===== */
+        .option3-body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f9;
+        }
+
         nav {
             background: #333;
             padding: 15px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
         }
-        nav .logo { color: white; font-size: 1.5em; font-weight: bold; }
-        nav a {
+
+        nav .logo {
+            color: white;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        nav .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        nav .nav-links a {
             color: white;
             text-decoration: none;
             margin-left: 25px;
@@ -208,15 +185,27 @@
             border-radius: 5px;
             transition: 0.3s;
         }
-        nav a:hover { background: #555; }
+
+        nav .nav-links a:hover {
+            background: #555;
+        }
+
         .hero {
             text-align: center;
             padding: 80px 20px;
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
         }
-        .hero h1 { font-size: 3em; }
-        .hero p { font-size: 1.2em; margin-top: 10px; }
+
+        .hero h1 {
+            font-size: 3em;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+
         .content {
             max-width: 900px;
             margin: 40px auto;
@@ -225,15 +214,24 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
         }
-        .card {
+
+        .content .card-item {
             background: white;
             padding: 25px;
             border-radius: 10px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             text-align: center;
         }
-        .card h3 { color: #333; margin-bottom: 10px; }
-        .card p { color: #666; }
+
+        .content .card-item h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .content .card-item p {
+            color: #666;
+        }
+
         footer {
             text-align: center;
             padding: 20px;
@@ -241,41 +239,129 @@
             color: white;
             margin-top: 40px;
         }
+
+        /* ===== SECTION DIVIDERS ===== */
+        .section-divider {
+            text-align: center;
+            padding: 30px 20px;
+            background: #e0e0e0;
+            color: #333;
+            font-size: 1.5em;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .section-divider span {
+            background: #333;
+            color: white;
+            padding: 10px 30px;
+            border-radius: 30px;
+        }
     </style>
 </head>
 <body>
-    <nav>
-        <span class="logo">🚀 Yuvraj</span>
-        <div>
-            <a href="#">Home</a>
-            <a href="#">Projects</a>
-            <a href="#">Blog</a>
-            <a href="#">Contact</a>
-        </div>
-    </nav>
 
-    <div class="hero">
-        <h1>Hello, I'm Yuvraj Singh 👋</h1>
-        <p>Developer • Creator • Problem Solver</p>
+    <!-- ============================================ -->
+    <!-- OPTION 1: MODERN CARD STYLE                  -->
+    <!-- ============================================ -->
+    <div class="section-divider">
+        <span>✨ Option 1: Modern Card</span>
     </div>
 
-    <div class="content">
+    <div class="option1-body">
         <div class="card">
-            <h3>💻 Projects</h3>
-            <p>Check out my latest work on GitHub</p>
-        </div>
-        <div class="card">
-            <h3>📝 Blog</h3>
-            <p>Writing about tech and development</p>
-        </div>
-        <div class="card">
-            <h3>🎯 Goals</h3>
-            <p>Building awesome things every day</p>
+            <div class="emoji">🚀</div>
+            <h1>Yuvraj Singh</h1>
+            <p>👨‍💻 Developer | Creator | Learner</p>
+            <p>Welcome to my little corner of the internet!</p>
+            <a href="#" class="btn">View My Projects</a>
+
+            <div class="social-icons">
+                <a href="https://github.com/i-amyrs" target="_blank">🐙</a>
+                <a href="#" target="_blank">🐦</a>
+                <a href="#" target="_blank">💼</a>
+            </div>
         </div>
     </div>
 
-    <footer>
-        <p>© 2026 Yuvraj Singh | Built with ❤️ on GitHub Pages</p>
-    </footer>
+    <!-- ============================================ -->
+    <!-- OPTION 2: DARK THEME WITH STATS              -->
+    <!-- ============================================ -->
+    <div class="section-divider">
+        <span>📊 Option 2: Dark Theme with Stats</span>
+    </div>
+
+    <div class="option2-body">
+        <div class="container">
+            <h1>👋 Yuvraj Singh</h1>
+            <p class="subtitle">Developer • Creator • Tech Enthusiast</p>
+
+            <div class="stats">
+                <div class="stat-box">
+                    <div class="number">📁 5+</div>
+                    <div class="label">Projects</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number">⭐ 10+</div>
+                    <div class="label">Stars Earned</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number">👥 3+</div>
+                    <div class="label">Contributions</div>
+                </div>
+            </div>
+
+            <!-- GitHub Stats Card -->
+            <img src="https://github-readme-stats.vercel.app/api?username=i-amyrs&show_icons=true&theme=dark" alt="GitHub Stats">
+
+            <p class="footer-text">
+                🚀 Building cool stuff, one commit at a time!
+            </p>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- OPTION 3: NAVIGATION MENU STYLE              -->
+    <!-- ============================================ -->
+    <div class="section-divider">
+        <span>🧭 Option 3: Navigation Menu</span>
+    </div>
+
+    <div class="option3-body">
+        <nav>
+            <span class="logo">🚀 Yuvraj</span>
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">Projects</a>
+                <a href="#">Blog</a>
+                <a href="#">Contact</a>
+            </div>
+        </nav>
+
+        <div class="hero">
+            <h1>Hello, I'm Yuvraj Singh 👋</h1>
+            <p>Developer • Creator • Problem Solver</p>
+        </div>
+
+        <div class="content">
+            <div class="card-item">
+                <h3>💻 Projects</h3>
+                <p>Check out my latest work on GitHub</p>
+            </div>
+            <div class="card-item">
+                <h3>📝 Blog</h3>
+                <p>Writing about tech and development</p>
+            </div>
+            <div class="card-item">
+                <h3>🎯 Goals</h3>
+                <p>Building awesome things every day</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2026 Yuvraj Singh | Built with ❤️ on GitHub Pages</p>
+        </footer>
+    </div>
+
 </body>
 </html>
